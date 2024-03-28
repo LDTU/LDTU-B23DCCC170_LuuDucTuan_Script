@@ -1,0 +1,9 @@
+.item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    transition: color 0.3s;
+  }
+  
+  .item:hover {
+    color: red;
+  }

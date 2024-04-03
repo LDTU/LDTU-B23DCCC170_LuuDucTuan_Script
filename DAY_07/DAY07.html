@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tong(a, b)
+        {
+            document.write("Tong cua " + a + " va " + b + " la: " + (a + b),'<br>');
+        }
+        function giai_thua(n)
+        {   
+            var giai_thua = 1
+            if(n == 0)
+            {
+                return 1;
+            }else{
+                for(i = 1; i <= n; i++) {
+                    giai_thua *= i ;
+                }
+                return giai_thua;
+            }
+        }
+        tong(24332, 34598)
+        document.write("Giai thua 5 la:" + giai_thua(5))
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        //Bài 2 - Khởi tạo 1 mảng các số nguyên
+        var inputString = prompt("Nhập vào các giá trị của mảng cách nhau bằng khoảng trắng:");
+        var inputArray = inputString.split(' ');
+        function intarray(inputArray){
+            var intArray = inputArray.map(function(item) {
+                return parseInt(item);
+            });
+            return intArray
+        }
+        var intArray = intarray(inputArray)
+        document.write("Mảng đã nhập vào : ","[", intArray,"]", "<br>")
+        // Tìm số nguyên lớn nhất trong mảng
+        function max(Array){
+            var maxNumber = Math.max(...Array);
+            document.write("Số nguyên lớn nhất trong mảng là:", maxNumber, "<br>");
+        }
+        max(intArray)
+        //Hàm tìm các số chính phương trong mảng
+        function chinh_phuong(number) {
+            return Number.isInteger(Math.sqrt(number));
+        }
+        function tim_chinh_phuong(array) {
+            var chinhPhuong = array.filter(function(number) {
+                return chinh_phuong(number);
+            });
+            return chinhPhuong;
+        }
+        var chinhPhuongArray = tim_chinh_phuong(intArray);
+        document.write("Các số chính phương trong mảng là: " + chinhPhuongArray.join(", "), "<br>");
+        //Hàm tìm các số lớn hơn trung bình cộng của mảng
+        function timso(array) {
+            var sum = array.reduce(function(total, current) {
+                return total + current;
+            }, 0);
+            
+            var average = sum / array.length;
+
+            var larger = array.filter(function(number) {
+                return number > average;
+            });
+
+            return larger;
+        }
+        var largerNumbers = timso(intArray);
+        document.write("Các số lớn hơn trung bình cộng của mảng là: " + largerNumbers.join(", "), "<br>");
+        //Hàm tính trung bình cộng của các số không âm của mảng
+        function tinh(array) {
+            var numbers = array.filter(function(number) {
+                return number >= 0;
+            });
+            var sum = numbers.reduce(function(total, current) {
+                return total + current;
+            }, 0);
+            return sum / numbers.length;
+        }
+        var average = tinh(intArray);
+        document.write("Trung bình cộng của các số không âm trong mảng là: " + average.toFixed(2), "<br>");
+    </script>
+</body>
+</html>

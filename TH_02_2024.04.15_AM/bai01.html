@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Bài 1 - Hàm sắp xếp theo thứ tự tăng dần
+        function sortarray(inputArray){
+            inputArray.sort(function(a, b) {
+                return a - b;
+            });
+
+            document.write("<p>Danh sách các giá trị sau khi đã sắp xếp:</p>");
+            document.write("<p>" + inputArray + "</p>");
+        }
+
+        var inputString = prompt("Nhập vào các giá trị của mảng cách nhau bằng khoảng trắng:");
+        var inputArray = inputString.split(' ');
+        document.write("<p>Danh sách các giá trị bạn vừa nhập:</p>");
+        document.write("<p>" + inputArray + "</p>");
+
+        sortarray(inputArray); // Gọi hàm sắp xếp
+
+        // - Hàm loại bỏ các phần tử trùng nhau, sao cho mỗi phần tử chỉ xuất hiện 1 lần
+        function setarray(inputArray){
+            var intArray = inputArray.map(function(item) {
+                return parseInt(item);
+            });
+
+            var setArray = new Set(intArray);
+            return Array.from(setArray);
+        }
+
+        for (var i = 0; i < inputArray.length; i++) {
+            inputArray[i] = parseInt(inputArray[i]);
+        }
+
+        document.write("<p>Chuỗi sau khi loại bỏ các phần tử trùng nhau:</p>");
+        document.write("<p>" + setarray(inputArray) + "</p>");
+    </script>
+</body>
+</html>

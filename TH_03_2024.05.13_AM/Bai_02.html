@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 02</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $("#addButton").click(function(){
+            var newItem = $("#inputItem").val().trim();
+            if(newItem !== "") {
+            $("#itemList").append("<li>" + newItem + "</li>");
+            $("#inputItem").val("");
+            }
+        });
+        });
+    </script>
+</head>
+<body>
+    <h1>List item:</h1>
+    <ul id="itemList">
+    </ul>
+    <input type="text" id="inputItem"><br><br>
+    <button type="button" id="addButton">Add</button>
+</body>
+</html>

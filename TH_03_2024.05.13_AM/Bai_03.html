@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slide Ảnh</title>
+<style>
+    #slideshow {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+    }
+    #slideshow img {
+    width: 100%;
+    height: auto;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    }
+    .btn {
+    cursor: pointer;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var currentIndex = 0;
+        var slides = $("#slideshow img");
+        var totalSlides = slides.length;
+        slides.eq(currentIndex).show();
+        setInterval(function() {
+            nextSlide();
+        }, 5000);
+        function nextSlide() {
+            slides.eq(currentIndex).fadeOut();
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.eq(currentIndex).fadeIn();
+        }
+        function prevSlide() {
+            slides.eq(currentIndex).fadeOut();
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            slides.eq(currentIndex).fadeIn();
+        }
+        $("#nextBtn").click(function() {
+            nextSlide();
+        });
+        $("#backBtn").click(function() {
+            prevSlide();
+        });
+    });
+</script>
+</head>
+<body>
+    <div id="slideshow">
+    <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2023/8/26/1233821/Giai-Nhi-1--Nang-Tre.jpg" alt="Slide 1">
+    <img src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg" alt="Slide 2">
+    <img src="https://images2.thanhnien.vn/528068263637045248/2024/1/25/e093e9cfc9027d6a142358d24d2ee350-65a11ac2af785880-17061562929701875684912.jpg" alt="Slide 3">
+    </div>
+    <button class="btn" id="backBtn">Back</button>
+    <button class="btn" id="nextBtn">Next</button>
+</body>
+</html>

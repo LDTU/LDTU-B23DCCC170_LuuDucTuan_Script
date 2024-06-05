@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<body>
+    <table id="userTable"></table>
+    <button id="load-data">Load Data</button>
+    
+    <button id="add-data">Add Data</button> <div id="user">
+            <tr>
+                <td>Name</td>
+                <td><input type="name"  id="name"></td>
+                <td>Email</td>
+                <td><input type="email"  id="email"></td>
+                <td>Phone</td>
+                <td><input type="number"  id="phone"></td>
+                <td>Password</td>
+                <td><input type="password"  id="password"></td>
+            </tr>
+        </div>
+    <script>
+        $(document).ready(function(){
+            $('#load-data').click(function(){
+                $.ajax({
+                    url: "http://api.uduer.com/users",
+                    type: "GET",
+                    success: function(result){
+                        var data = result.data.users;
+                        console.log(data)
+                        var tbody =$('table');
+                        data.forEach(function(user){
+                            tbody.append("<tr><td>"+user._id+"</td><td>"+user.name+"</td><td>"+user.email+"</td><td>"+"<button>Edit</button><button>Delete</button>"+"</td></tr>")
+                        });
+                    },
+                    error: function(error){
+                        console.log(error)
+                    }
+                })
+            });
+        })
+        $('#add-data').click(function() { 
+        var newUser = {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            phone: $('#phone').val(),
+            password: $('#password').val()
+        };
+        
+        $.ajax({
+            url: "http://api.uduer.com/users", 
+            type: "POST",
+            data: newUser,
+            success: function(result) {
+                alert('Data added successfully!');
+                $('#load-data').click(); 
+            },
+            error: function(error) {
+                console.log(error);
+                    }
+                });
+            });
+    </script>
+</body>
+
+</html>
